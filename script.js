@@ -17,7 +17,25 @@ themeToggle.addEventListener('click', () => {
     }
 });
 
-// --- 2. Multilingual JSON Logic ---
+// --- 2. Mobile Hamburger Overlay Menu ---
+const hamburgerBtn = document.getElementById('hamburger-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+
+hamburgerBtn.addEventListener('click', toggleMobileMenu);
+
+function toggleMobileMenu() {
+    hamburgerBtn.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    
+    // Verhindert das Scrollen im Hintergrund bei geöffnetem Menü
+    if (mobileMenu.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// --- 3. Multilingual JSON Logic ---
 let translations = {};
 
 fetch('lang.json')
@@ -42,7 +60,7 @@ function setLanguage(lang) {
     });
 }
 
-// --- 3. Custom Cursor Fluid Logic ---
+// --- 4. Custom Cursor Fluid Logic ---
 const cursor = document.querySelector('.custom-cursor');
 
 document.addEventListener('mousemove', e => {
@@ -51,7 +69,6 @@ document.addEventListener('mousemove', e => {
 });
 
 function setupCursorListeners() {
-    // Fügt den Hover-Effekt dynamisch zu klickbaren Elementen hinzu
     document.querySelectorAll('a, button, .album-card, select, .close-modal, .lightbox-close, .modal-content img').forEach(item => {
         item.addEventListener('mouseenter', () => cursor.classList.add('hover'));
         item.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
@@ -59,7 +76,7 @@ function setupCursorListeners() {
 }
 setupCursorListeners();
 
-// --- 4. Scroll Intersection Observer (Fade-In) ---
+// --- 5. Scroll Intersection Observer (Fade-In) ---
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -73,7 +90,7 @@ document.querySelectorAll('.section').forEach(section => {
     observer.observe(section);
 });
 
-// --- 5. Portfolio Album Core & Masonry Injector ---
+// --- 6. Portfolio Album Core (Mit Lazy Loading Support) ---
 const albumData = {
     spring: [
         'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1200',
@@ -99,30 +116,29 @@ const modal = document.getElementById('album-modal');
 const modalGallery = document.getElementById('modal-gallery');
 
 function openAlbum(albumId) {
-    modalGallery.innerHTML = ''; // Vorherige Bilder löschen
+    modalGallery.innerHTML = ''; 
     
     albumData[albumId].forEach(imgSrc => {
         const img = document.createElement('img');
         img.src = imgSrc;
         img.alt = 'Fashion Photography Tatiana Lumos';
+        img.loading = 'lazy'; // 🔥 Performance-Boost: Bilder werden erst geladen wenn nötig!
         
-        // Klick-Event für das Vollbild (Lightbox) hinzufügen
         img.addEventListener('click', () => openLightbox(imgSrc));
-        
         modalGallery.appendChild(img);
     });
 
     modal.style.display = 'block';
-    document.body.style.overflow = 'hidden'; // Scrollen der Hauptseite stoppen
+    document.body.style.overflow = 'hidden'; 
     setupCursorListeners(); 
 }
 
 function closeAlbum() {
     modal.style.display = 'none';
-    document.body.style.overflow = 'auto'; // Scrollen wieder aktivieren
+    document.body.style.overflow = 'auto'; 
 }
 
-// --- 6. NEU: Lightbox Logic (Vollbild für Bilder) ---
+// --- 7. Lightbox Logic (Vollbild) ---
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
 
@@ -135,7 +151,6 @@ function closeLightbox() {
     lightbox.classList.remove('active');
 }
 
-// Klick außerhalb des Vollbilds oder auf Hintergrund schließt Lightbox/Album
 window.onclick = function(event) {
     if (event.target == lightbox) {
         closeLightbox();
@@ -144,7 +159,7 @@ window.onclick = function(event) {
     }
 }
 
-// --- 7. Kontaktformular Submit Animation ---
+// --- 8. Kontaktformular Animation ---
 const contactForm = document.getElementById('contactForm');
 if(contactForm) {
     contactForm.addEventListener('submit', (e) => {
