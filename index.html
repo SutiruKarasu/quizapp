@@ -36,7 +36,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <header id="home" class="hero">
+    <header id="home" class="hero section">
         <div class="hero-content">
             <h1 data-i18n="hero_title">Tatiana Lumos</h1>
             <p data-i18n="hero_subtitle">Fashion Photography</p>
@@ -47,7 +47,7 @@
     <section id="about" class="section bg-about">
         <h2 class="section-title" data-i18n="about_title">About Me</h2>
         <div class="about-content">
-            <p data-i18n="about_text">Capturing elegance and style through the lens. Dedicated to flawless aesthetics.</p>
+            <p data-i18n="about_text">Capturing elegance and style through the lens. My work focuses on the delicate balance between high fashion and raw emotion, delivering flawless aesthetics in every shot.</p>
         </div>
     </section>
 
@@ -57,17 +57,17 @@
         <div class="album-grid">
             <!-- Album 1 -->
             <div class="album-card" onclick="openAlbum('spring')">
-                <div class="album-cover" style="background-image: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=500');"></div>
+                <div class="album-cover" style="background-image: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800');"></div>
                 <h3 data-i18n="album_spring">Spring Collection</h3>
             </div>
             <!-- Album 2 -->
             <div class="album-card" onclick="openAlbum('vogue')">
-                <div class="album-cover" style="background-image: url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500');"></div>
+                <div class="album-cover" style="background-image: url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800');"></div>
                 <h3 data-i18n="album_vogue">Vogue Editorials</h3>
             </div>
             <!-- Album 3 -->
             <div class="album-card" onclick="openAlbum('street')">
-                <div class="album-cover" style="background-image: url('https://images.unsplash.com/photo-1529139574466-a303027c028b?w=500');"></div>
+                <div class="album-cover" style="background-image: url('https://images.unsplash.com/photo-1529139574466-a303027c028b?w=800');"></div>
                 <h3 data-i18n="album_street">Street Style</h3>
             </div>
         </div>
@@ -76,7 +76,7 @@
     <!-- Contact Section -->
     <section id="contact" class="section bg-contact">
         <h2 class="section-title" data-i18n="contact_title">Get in Touch</h2>
-        <form class="contact-form" onsubmit="event.preventDefault();">
+        <form class="contact-form" id="contactForm">
             <div class="form-group">
                 <label for="name" data-i18n="form_name">Name</label>
                 <input type="text" id="name" required>
@@ -86,10 +86,6 @@
                 <input type="email" id="email" required>
             </div>
             <div class="form-group">
-                <label for="phone" data-i18n="form_phone">Phone</label>
-                <input type="tel" id="phone">
-            </div>
-            <div class="form-group">
                 <label for="message" data-i18n="form_message">Message</label>
                 <textarea id="message" rows="5" required></textarea>
             </div>
@@ -97,12 +93,18 @@
         </form>
     </section>
 
-    <!-- Modal für Alben (Pop-Up) -->
+    <!-- Modal für das Album (Grid Ansicht) -->
     <div id="album-modal" class="modal">
         <span class="close-modal" onclick="closeAlbum()">&times;</span>
         <div class="modal-content" id="modal-gallery">
-            <!-- Bilder werden dynamisch injiziert -->
+            <!-- Bilder werden per JS eingefügt -->
         </div>
+    </div>
+
+    <!-- Lightbox für Vollbildansicht einzelner Bilder -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="" alt="Fullscreen Photography">
     </div>
 
     <script src="script.js"></script>
