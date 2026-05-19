@@ -1,14 +1,40 @@
-/* --- Variablen & Reset --- */
+/* --- CSS Variablen für Light- & Dark-Mode --- */
 :root {
     --powder-blue: #B0E0E6;
     --baby-pink: #F4C2C2;
+    
+    /* Light Mode Farbspiel */
+    --bg-main: #ffffff;
+    --bg-hero: linear-gradient(135deg, rgba(176, 224, 230, 0.35) 0%, rgba(244, 194, 194, 0.35) 100%);
+    --bg-about: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(176, 224, 230, 0.15) 100%);
+    --bg-portfolio: linear-gradient(180deg, rgba(176, 224, 230, 0.15) 0%, rgba(244, 194, 194, 0.15) 100%);
+    --bg-contact: linear-gradient(180deg, rgba(244, 194, 194, 0.15) 0%, rgba(255,255,255,1) 100%);
+    
     --text-dark: #1a1a1a;
-    --bg-white: #ffffff;
-    --bg-light: #fcfcfc;
-    --font-heading: 'Playfair Display', serif;
-    --font-body: 'Lato', sans-serif;
+    --text-muted: #4a4a4a;
+    --navbar-bg: rgba(255, 255, 255, 0.92);
+    --input-bg: rgba(255, 255, 255, 0.5);
+    --input-border: #dcdcdc;
+    --modal-bg: rgba(255, 255, 255, 0.99);
 }
 
+body.dark-mode {
+    /* Dark Mode Farbspiel (Neon Pastel auf Dark Slate) */
+    --bg-main: #121418;
+    --bg-hero: linear-gradient(135deg, #181c24 0%, #221a20 100%);
+    --bg-about: linear-gradient(180deg, #121418 0%, #161e26 100%);
+    --bg-portfolio: linear-gradient(180deg, #161e26 0%, #221a22 100%);
+    --bg-contact: linear-gradient(180deg, #221a22 0%, #121418 100%);
+    
+    --text-dark: #f5f5f5;
+    --text-muted: #b5c0cd;
+    --navbar-bg: rgba(18, 20, 24, 0.92);
+    --input-bg: rgba(255, 255, 255, 0.03);
+    --input-border: #3a414c;
+    --modal-bg: rgba(18, 20, 24, 0.99);
+}
+
+/* --- Global Reset & Basics --- */
 * {
     margin: 0;
     padding: 0;
@@ -16,12 +42,13 @@
 }
 
 body {
-    font-family: var(--font-body);
+    font-family: 'Lato', sans-serif;
     color: var(--text-dark);
-    background-color: var(--bg-white);
+    background-color: var(--bg-main);
     line-height: 1.6;
     scroll-behavior: smooth;
     overflow-x: hidden;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 /* --- Elegantes Scroll-Fade-In --- */
@@ -58,13 +85,13 @@ body {
 
 .custom-cursor.hover {
     transform: translate(-50%, -50%) scale(2.5);
-    background-color: rgba(176, 224, 230, 0.25);
+    background-color: rgba(176, 224, 230, 0.3);
     border-color: var(--powder-blue);
 }
 
 /* --- Typografie --- */
 h1, h2, h3, .logo {
-    font-family: var(--font-heading);
+    font-family: 'Playfair Display', serif;
     font-weight: 400;
     letter-spacing: 1px;
 }
@@ -86,7 +113,7 @@ h1, h2, h3, .logo {
     margin: 20px auto 0;
 }
 
-/* --- Navigation --- */
+/* --- Navigation & Controls --- */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -94,9 +121,10 @@ h1, h2, h3, .logo {
     padding: 2rem 5%;
     position: fixed;
     width: 100%;
-    background: rgba(255, 255, 255, 0.92);
+    background: var(--navbar-bg);
     backdrop-filter: blur(10px);
     z-index: 1000;
+    transition: background 0.5s ease;
 }
 
 .logo {
@@ -124,56 +152,47 @@ h1, h2, h3, .logo {
     color: var(--powder-blue);
 }
 
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* Dark Mode Button */
+.theme-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    outline: none;
+    transition: transform 0.3s ease;
+}
+
+.theme-btn:hover {
+    transform: scale(1.2);
+}
+
 #lang-select {
     border: none;
     background: transparent;
-    font-family: var(--font-body);
+    color: var(--text-dark);
+    font-family: 'Lato', sans-serif;
     font-size: 0.85rem;
     letter-spacing: 1px;
     outline: none;
+    cursor: pointer;
 }
 
-/* --- Sections --- */
-.section {
-    padding: 10rem 10%;
-}
+/* --- Background Styles (The Color Play) --- */
+.section { padding: 10rem 10%; }
+.hero { background: var(--bg-hero); height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; }
+.bg-about { background: var(--bg-about); }
+.bg-portfolio { background: var(--bg-portfolio); }
+.bg-contact { background: var(--bg-contact); }
 
-.bg-light {
-    background-color: var(--bg-light);
-}
-
-/* --- Hero --- */
-.hero {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: linear-gradient(135deg, rgba(176, 224, 230, 0.15) 0%, rgba(244, 194, 194, 0.15) 100%);
-}
-
-.hero h1 {
-    font-size: 4.5rem;
-    letter-spacing: 8px;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-}
-
-.hero p {
-    font-size: 1.1rem;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: #777;
-}
-
-/* --- About --- */
-.about-content {
-    max-width: 700px;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 1.1rem;
-    color: #555;
-}
+.hero h1 { font-size: 4.5rem; letter-spacing: 8px; margin-bottom: 15px; text-transform: uppercase; }
+.hero p { font-size: 1.1rem; letter-spacing: 4px; text-transform: uppercase; color: var(--text-muted); }
+.about-content { max-width: 700px; margin: 0 auto; text-align: center; font-size: 1.1rem; color: var(--text-muted); }
 
 /* --- Portfolio Grid --- */
 .album-grid {
@@ -187,8 +206,7 @@ h1, h2, h3, .logo {
 .album-card {
     position: relative;
     overflow: hidden;
-    border-radius: 0;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
 .album-cover {
@@ -207,7 +225,7 @@ h1, h2, h3, .logo {
     bottom: 0;
     width: 100%;
     padding: 2rem 1.5rem;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
     color: white;
     text-align: center;
     font-size: 1.3rem;
@@ -215,33 +233,19 @@ h1, h2, h3, .logo {
 }
 
 /* --- Contact Form --- */
-.contact-form {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.form-group {
-    margin-bottom: 2rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.6rem;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #555;
-}
+.contact-form { max-width: 600px; margin: 0 auto; }
+.form-group { margin-bottom: 2rem; }
+.form-group label { display: block; margin-bottom: 0.6rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
 
 .form-group input, .form-group textarea {
     width: 100%;
     padding: 14px;
-    border: 1px solid #e5e5e5;
-    background: transparent;
-    font-family: var(--font-body);
+    border: 1px solid var(--input-border);
+    background: var(--input-bg);
+    color: var(--text-dark);
+    font-family: 'Lato', sans-serif;
     font-size: 1rem;
-    transition: border-color 0.4s;
-    border-radius: 0;
+    transition: border-color 0.4s, background-color 0.4s;
 }
 
 .form-group input:focus, .form-group textarea:focus {
@@ -255,16 +259,14 @@ h1, h2, h3, .logo {
     border: none;
     padding: 18px;
     font-size: 0.9rem;
-    font-family: var(--font-body);
+    font-family: 'Lato', sans-serif;
     letter-spacing: 3px;
     text-transform: uppercase;
     transition: background-color 0.3s;
     width: 100%;
 }
 
-.submit-btn:hover {
-    background-color: var(--powder-blue);
-}
+.submit-btn:hover { background-color: var(--powder-blue); }
 
 /* --- High-Fashion Masonry Modal --- */
 .modal {
@@ -275,8 +277,9 @@ h1, h2, h3, .logo {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.99);
+    background-color: var(--modal-bg);
     overflow-y: auto;
+    transition: background-color 0.5s ease;
 }
 
 .close-modal {
@@ -290,39 +293,13 @@ h1, h2, h3, .logo {
     transition: color 0.3s;
 }
 
-.close-modal:hover {
-    color: var(--baby-pink);
-}
-
-.modal-content {
-    column-count: 2; /* Magazin-Layout */
-    column-gap: 24px;
-    padding: 8rem 8%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.modal-content img {
-    width: 100%;
-    height: auto;
-    margin-bottom: 24px;
-    display: inline-block;
-    box-shadow: 0 4px 25px rgba(0,0,0,0.02);
-    transition: transform 0.4s;
-}
-
-.modal-content img:hover {
-    transform: scale(1.01);
-}
+.close-modal:hover { color: var(--baby-pink); }
+.modal-content { column-count: 2; column-gap: 24px; padding: 8rem 8%; max-width: 1200px; margin: 0 auto; }
+.modal-content img { width: 100%; height: auto; margin-bottom: 24px; display: inline-block; box-shadow: 0 4px 25px rgba(0,0,0,0.05); }
 
 @media (max-width: 768px) {
-    .modal-content {
-        column-count: 1;
-    }
-    .hero h1 {
-        font-size: 2.8rem;
-    }
-    .section {
-        padding: 6rem 5%;
-    }
+    .modal-content { column-count: 1; }
+    .hero h1 { font-size: 2.8rem; }
+    .section { padding: 6rem 5%; }
+    .nav-links { display: none; } /* Einfachheitshalber für Mobile ausgeblendet */
 }
