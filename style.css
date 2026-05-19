@@ -34,8 +34,8 @@ body.dark-mode {
     --modal-bg: rgba(18, 20, 24, 0.99);
 }
 
-body.dark-mode .logo-img {
-    filter: imvert(1);
+    body.dark-mode .logo-img {
+    filter: invert(1);
 }
 
 /* --- Global & Smooth Scroll --- */
