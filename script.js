@@ -1,7 +1,6 @@
 // --- 1. Dark Mode Logic ---
 const themeToggle = document.getElementById('theme-toggle');
 
-// Beim Laden prüfen, ob Dark Mode bereits aktiv war
 if (localStorage.getItem('theme') === 'dark') {
     document.body.classList.add('dark-mode');
     themeToggle.textContent = '☀️';
@@ -9,7 +8,6 @@ if (localStorage.getItem('theme') === 'dark') {
 
 themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
-    
     if (document.body.classList.contains('dark-mode')) {
         localStorage.setItem('theme', 'dark');
         themeToggle.textContent = '☀️';
@@ -53,7 +51,8 @@ document.addEventListener('mousemove', e => {
 });
 
 function setupCursorListeners() {
-    document.querySelectorAll('a, button, .album-card, select, .close-modal').forEach(item => {
+    // Fügt den Hover-Effekt dynamisch zu klickbaren Elementen hinzu
+    document.querySelectorAll('a, button, .album-card, select, .close-modal, .lightbox-close, .modal-content img').forEach(item => {
         item.addEventListener('mouseenter', () => cursor.classList.add('hover'));
         item.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
     });
@@ -67,7 +66,7 @@ const observer = new IntersectionObserver(entries => {
             entry.target.classList.add('is-visible');
         }
     });
-}, { threshold: 0.05 });
+}, { threshold: 0.1 });
 
 document.querySelectorAll('.section').forEach(section => {
     section.classList.add('fade-in-section');
@@ -77,22 +76,22 @@ document.querySelectorAll('.section').forEach(section => {
 // --- 5. Portfolio Album Core & Masonry Injector ---
 const albumData = {
     spring: [
-        'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800',
-        'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800',
-        'https://images.unsplash.com/photo-1550614000-4b95d466f251?w=800',
-        'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800'
+        'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1200',
+        'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200',
+        'https://images.unsplash.com/photo-1550614000-4b95d466f251?w=1200',
+        'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=1200'
     ],
     vogue: [
-        'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800',
-        'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800',
-        'https://images.unsplash.com/photo-1506422748879-887454f9cdff?w=800',
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800'
+        'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1200',
+        'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=1200',
+        'https://images.unsplash.com/photo-1506422748879-887454f9cdff?w=1200',
+        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=1200'
     ],
     street: [
-        'https://images.unsplash.com/photo-1529139574466-a303027c028b?w=800',
-        'https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=800',
-        'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800',
-        'https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?w=800'
+        'https://images.unsplash.com/photo-1529139574466-a303027c028b?w=1200',
+        'https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=1200',
+        'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1200',
+        'https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?w=1200'
     ]
 };
 
@@ -100,27 +99,61 @@ const modal = document.getElementById('album-modal');
 const modalGallery = document.getElementById('modal-gallery');
 
 function openAlbum(albumId) {
-    modalGallery.innerHTML = '';
+    modalGallery.innerHTML = ''; // Vorherige Bilder löschen
     
     albumData[albumId].forEach(imgSrc => {
         const img = document.createElement('img');
         img.src = imgSrc;
         img.alt = 'Fashion Photography Tatiana Lumos';
+        
+        // Klick-Event für das Vollbild (Lightbox) hinzufügen
+        img.addEventListener('click', () => openLightbox(imgSrc));
+        
         modalGallery.appendChild(img);
     });
 
     modal.style.display = 'block';
-    document.body.style.overflow = 'hidden';
-    setupCursorListeners(); // Cursor-Effekt für neue Elemente refreshen
+    document.body.style.overflow = 'hidden'; // Scrollen der Hauptseite stoppen
+    setupCursorListeners(); 
 }
 
 function closeAlbum() {
     modal.style.display = 'none';
-    document.body.style.overflow = 'auto';
+    document.body.style.overflow = 'auto'; // Scrollen wieder aktivieren
 }
 
+// --- 6. NEU: Lightbox Logic (Vollbild für Bilder) ---
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+
+function openLightbox(src) {
+    lightboxImg.src = src;
+    lightbox.classList.add('active');
+}
+
+function closeLightbox() {
+    lightbox.classList.remove('active');
+}
+
+// Klick außerhalb des Vollbilds oder auf Hintergrund schließt Lightbox/Album
 window.onclick = function(event) {
-    if (event.target == modal) {
+    if (event.target == lightbox) {
+        closeLightbox();
+    } else if (event.target == modal) {
         closeAlbum();
     }
+}
+
+// --- 7. Kontaktformular Submit Animation ---
+const contactForm = document.getElementById('contactForm');
+if(contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        contactForm.innerHTML = `
+            <div style="text-align: center; padding: 2rem 0; animation: fadeIn 0.8s forwards;">
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 1rem;">Thank You!</h3>
+                <p style="color: var(--text-muted);">Your message has been received. I will get back to you shortly.</p>
+            </div>
+        `;
+    });
 }
