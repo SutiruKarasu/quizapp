@@ -15,13 +15,19 @@
 
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="logo">T. Lumos</div>
+        <!-- Das Logo ersetzt jetzt den Text und verweist nach oben -->
+        <a href="#home" class="logo">
+            <img src="Bilder/tatiana_Lumos_Logo.png" alt="Tatiana Lumos Logo" class="logo-img">
+        </a>
+
+        <!-- Desktop Links (werden auf Mobile versteckt) -->
         <ul class="nav-links">
             <li><a href="#home" data-i18n="nav_home">Home</a></li>
             <li><a href="#about" data-i18n="nav_about">About</a></li>
             <li><a href="#portfolio" data-i18n="nav_portfolio">Portfolio</a></li>
             <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
         </ul>
+
         <div class="nav-controls">
             <!-- Dark Mode Button -->
             <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">🌙</button>
@@ -32,8 +38,24 @@
                     <option value="ru">RU</option>
                 </select>
             </div>
+            <!-- Hamburger Menu Button für Mobile -->
+            <button class="hamburger" id="hamburger-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-overlay" id="mobile-menu">
+        <ul class="mobile-nav-links">
+            <li><a href="#home" data-i18n="nav_home" onclick="toggleMobileMenu()">Home</a></li>
+            <li><a href="#about" data-i18n="nav_about" onclick="toggleMobileMenu()">About</a></li>
+            <li><a href="#portfolio" data-i18n="nav_portfolio" onclick="toggleMobileMenu()">Portfolio</a></li>
+            <li><a href="#contact" data-i18n="nav_contact" onclick="toggleMobileMenu()">Contact</a></li>
+        </ul>
+    </div>
 
     <!-- Hero Section -->
     <header id="home" class="hero section">
