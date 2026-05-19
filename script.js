@@ -1,11 +1,32 @@
-// --- 1. Multilingual JSON Logic ---
+// --- 1. Dark Mode Logic ---
+const themeToggle = document.getElementById('theme-toggle');
+
+// Beim Laden prüfen, ob Dark Mode bereits aktiv war
+if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark-mode');
+    themeToggle.textContent = '☀️';
+}
+
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    
+    if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+        themeToggle.textContent = '☀️';
+    } else {
+        localStorage.setItem('theme', 'light');
+        themeToggle.textContent = '🌙';
+    }
+});
+
+// --- 2. Multilingual JSON Logic ---
 let translations = {};
 
 fetch('lang.json')
     .then(response => response.json())
     .then(data => {
         translations = data;
-        setLanguage('en'); // Standardsprache
+        setLanguage('en'); 
     })
     .catch(error => console.error('Error loading lang.json:', error));
 
@@ -23,7 +44,7 @@ function setLanguage(lang) {
     });
 }
 
-// --- 2. Custom Cursor Fluid Logic ---
+// --- 3. Custom Cursor Fluid Logic ---
 const cursor = document.querySelector('.custom-cursor');
 
 document.addEventListener('mousemove', e => {
@@ -37,10 +58,9 @@ function setupCursorListeners() {
         item.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
     });
 }
-// Initial ausführen
 setupCursorListeners();
 
-// --- 3. Scroll Intersection Observer (Fade-In) ---
+// --- 4. Scroll Intersection Observer (Fade-In) ---
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -54,7 +74,7 @@ document.querySelectorAll('.section').forEach(section => {
     observer.observe(section);
 });
 
-// --- 4. Portfolio Album Core & Masonry Injector ---
+// --- 5. Portfolio Album Core & Masonry Injector ---
 const albumData = {
     spring: [
         'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800',
@@ -91,9 +111,7 @@ function openAlbum(albumId) {
 
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
-    
-    // Da neue Elemente (Schließen-Button / Bilder) sichtbar sind, Cursor-Listener updaten
-    setupCursorListeners();
+    setupCursorListeners(); // Cursor-Effekt für neue Elemente refreshen
 }
 
 function closeAlbum() {
