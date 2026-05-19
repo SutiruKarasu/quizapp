@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <!-- Edler Custom Cursor -->
+    <!-- Custom Cursor -->
     <div class="custom-cursor"></div>
 
     <!-- Navigation -->
@@ -22,12 +22,16 @@
             <li><a href="#portfolio" data-i18n="nav_portfolio">Portfolio</a></li>
             <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
         </ul>
-        <div class="language-switcher">
-            <select id="lang-select">
-                <option value="en">EN</option>
-                <option value="cs">CS</option>
-                <option value="ru">RU</option>
-            </select>
+        <div class="nav-controls">
+            <!-- Dark Mode Button -->
+            <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">🌙</button>
+            <div class="language-switcher">
+                <select id="lang-select">
+                    <option value="en">EN</option>
+                    <option value="cs">CS</option>
+                    <option value="ru">RU</option>
+                </select>
+            </div>
         </div>
     </nav>
 
@@ -40,7 +44,7 @@
     </header>
 
     <!-- About Section -->
-    <section id="about" class="section">
+    <section id="about" class="section bg-about">
         <h2 class="section-title" data-i18n="about_title">About Me</h2>
         <div class="about-content">
             <p data-i18n="about_text">Capturing elegance and style through the lens. Dedicated to flawless aesthetics.</p>
@@ -48,7 +52,7 @@
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="section bg-light">
+    <section id="portfolio" class="section bg-portfolio">
         <h2 class="section-title" data-i18n="portfolio_title">Portfolio</h2>
         <div class="album-grid">
             <!-- Album 1 -->
@@ -70,7 +74,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section">
+    <section id="contact" class="section bg-contact">
         <h2 class="section-title" data-i18n="contact_title">Get in Touch</h2>
         <form class="contact-form" onsubmit="event.preventDefault();">
             <div class="form-group">
