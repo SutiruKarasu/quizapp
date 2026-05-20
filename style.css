@@ -123,8 +123,8 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-sp
 .bg-about { background: var(--bg-about); }
 .bg-portfolio { background: var(--bg-portfolio); }
 .bg-contact { background: var(--bg-contact); }
-.hero h1 { font-size: 4.5rem; letter-spacing: 8px; margin-bottom: 15px; text-transform: uppercase; }
-.hero p { font-size: 1.1rem; letter-spacing: 4px; text-transform: uppercase; color: var(--text-muted); }
+.hero h1 { font-size: 4.5rem; letter-spacing: 8px; margin-bottom: 25px; text-transform: uppercase; }
+.hero p { font-size: 1.2rem; letter-spacing: 1.5px; color: var(--text-muted); max.width: 650px; marging: 0 auto; line-height: 1.8; font-style: italic;
 .about-content { max-width: 700px; margin: 0 auto; text-align: center; font-size: 1.1rem; color: var(--text-muted); }
 
 /* --- Portfolio Infinity Slider (Swiper) --- */
