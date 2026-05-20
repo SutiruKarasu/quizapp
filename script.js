@@ -1,4 +1,4 @@
-// --- 1. Dark Mode Logic ---
+
 const themeToggle = document.getElementById('theme-toggle');
 
 if (localStorage.getItem('theme') === 'dark') {
@@ -17,7 +17,7 @@ themeToggle.addEventListener('click', () => {
     }
 });
 
-// --- 2. Mobile Hamburger Overlay Menu ---
+
 const hamburgerBtn = document.getElementById('hamburger-btn');
 const mobileMenu = document.getElementById('mobile-menu');
 
@@ -34,7 +34,7 @@ function toggleMobileMenu() {
     }
 }
 
-// --- 3. Multilingual JSON Logic ---
+
 let translations = {};
 
 fetch('lang.json')
@@ -59,7 +59,7 @@ function setLanguage(lang) {
     });
 }
 
-// --- 4. Custom Cursor Fluid Logic ---
+
 const cursor = document.querySelector('.custom-cursor');
 
 document.addEventListener('mousemove', e => {
@@ -76,7 +76,7 @@ function setupCursorListeners() {
 }
 setupCursorListeners();
 
-// --- 5. Scroll Intersection Observer (Fade-In) ---
+
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -90,7 +90,7 @@ document.querySelectorAll('.section').forEach(section => {
     observer.observe(section);
 });
 
-// --- 6. Portfolio Album Core (Mit Lazy Loading) ---
+
 const albumData = {
     spring: [
         'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1200',
@@ -115,7 +115,7 @@ const albumData = {
 const modal = document.getElementById('album-modal');
 const modalGallery = document.getElementById('modal-gallery');
 
-// Die Funktion wird nun von den onclick-Attributen in den Swiper-Slides ausgelöst
+
 function openAlbum(albumId) {
     modalGallery.innerHTML = ''; 
     
@@ -134,8 +134,7 @@ function openAlbum(albumId) {
     setupCursorListeners(); 
 }
 
-// Damit der Click im Slider auch wirklich auf dem geklonten Slide funktioniert
-// weisen wir Swiper an, clicks an die Funktion durchzureichen
+
 window.openAlbum = openAlbum; 
 
 function closeAlbum() {
@@ -143,7 +142,7 @@ function closeAlbum() {
     document.body.style.overflow = 'auto'; 
 }
 
-// --- 7. Lightbox Logic (Vollbild) ---
+
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
 
@@ -164,7 +163,7 @@ window.onclick = function(event) {
     }
 }
 
-// --- 8. Kontaktformular Animation ---
+
 const contactForm = document.getElementById('contactForm');
 if(contactForm) {
     contactForm.addEventListener('submit', (e) => {
@@ -178,8 +177,7 @@ if(contactForm) {
     });
 }
 
-// --- 9. DIE SWIPER.JS INFINITY LOOP MAGIE ---
-// Das initialisiert den Slider, zentriert ihn, loopt ihn und verknüpft die Buttons
+
 const albumSwiper = new Swiper('.album-swiper', {
     loop: true,                 // Der endlose Infinity Loop
     slidesPerView: 'auto',      // Passt sich perfekt den 380px Karten an
@@ -190,7 +188,7 @@ const albumSwiper = new Swiper('.album-swiper', {
         nextEl: '.next-btn',    // Deine Custom Buttons
         prevEl: '.prev-btn',
     },
-    // Wenn der Nutzer zieht, soll das native Klick-Event nicht feuern
+
     preventClicks: true,
     preventClicksPropagation: true
 });
