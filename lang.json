@@ -17,8 +17,7 @@
     "form_email": "Email",
     "form_phone": "Phone Number",
     "form_message": "Message",
-    "btn_send": "Send Message",
-    "form_telephone": "telephone"
+    "btn_send": "Send Message"
   },
   "cs": {
     "nav_home": "Domů",
@@ -39,7 +38,6 @@
     "form_phone": "Telefonní číslo",
     "form_message": "Zpráva",
     "btn_send": "Odeslat zprávu"
-    "form_telephone": "telefonní číslo"
   },
   "ru": {
     "nav_home": "Главная",
