@@ -27,7 +27,6 @@ function toggleMobileMenu() {
     hamburgerBtn.classList.toggle('active');
     mobileMenu.classList.toggle('active');
     
-    // Verhindert das Scrollen im Hintergrund bei geöffnetem Menü
     if (mobileMenu.classList.contains('active')) {
         document.body.style.overflow = 'hidden';
     } else {
@@ -69,7 +68,8 @@ document.addEventListener('mousemove', e => {
 });
 
 function setupCursorListeners() {
-    document.querySelectorAll('a, button, .album-card, select, .close-modal, .lightbox-close, .modal-content img').forEach(item => {
+    // Hier fügen wir .swiper-slide hinzu, damit der Cursor auch bei den neuen Karten reagiert
+    document.querySelectorAll('a, button, .swiper-slide, select, .close-modal, .lightbox-close, .modal-content img, .slider-btn').forEach(item => {
         item.addEventListener('mouseenter', () => cursor.classList.add('hover'));
         item.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
     });
@@ -90,7 +90,7 @@ document.querySelectorAll('.section').forEach(section => {
     observer.observe(section);
 });
 
-// --- 6. Portfolio Album Core (Mit Lazy Loading Support) ---
+// --- 6. Portfolio Album Core (Mit Lazy Loading) ---
 const albumData = {
     spring: [
         'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1200',
@@ -115,6 +115,7 @@ const albumData = {
 const modal = document.getElementById('album-modal');
 const modalGallery = document.getElementById('modal-gallery');
 
+// Die Funktion wird nun von den onclick-Attributen in den Swiper-Slides ausgelöst
 function openAlbum(albumId) {
     modalGallery.innerHTML = ''; 
     
@@ -122,7 +123,7 @@ function openAlbum(albumId) {
         const img = document.createElement('img');
         img.src = imgSrc;
         img.alt = 'Fashion Photography Tatiana Lumos';
-        img.loading = 'lazy'; // 🔥 Performance-Boost: Bilder werden erst geladen wenn nötig!
+        img.loading = 'lazy'; 
         
         img.addEventListener('click', () => openLightbox(imgSrc));
         modalGallery.appendChild(img);
@@ -132,6 +133,10 @@ function openAlbum(albumId) {
     document.body.style.overflow = 'hidden'; 
     setupCursorListeners(); 
 }
+
+// Damit der Click im Slider auch wirklich auf dem geklonten Slide funktioniert
+// weisen wir Swiper an, clicks an die Funktion durchzureichen
+window.openAlbum = openAlbum; 
 
 function closeAlbum() {
     modal.style.display = 'none';
@@ -172,3 +177,20 @@ if(contactForm) {
         `;
     });
 }
+
+// --- 9. DIE SWIPER.JS INFINITY LOOP MAGIE ---
+// Das initialisiert den Slider, zentriert ihn, loopt ihn und verknüpft die Buttons
+const albumSwiper = new Swiper('.album-swiper', {
+    loop: true,                 // Der endlose Infinity Loop
+    slidesPerView: 'auto',      // Passt sich perfekt den 380px Karten an
+    spaceBetween: 40,           // Abstand (2.5rem)
+    centeredSlides: true,       // Karte schnappt exakt in der Mitte ein
+    speed: 600,                 // Geschmeidige Übergangsgeschwindigkeit
+    navigation: {
+        nextEl: '.next-btn',    // Deine Custom Buttons
+        prevEl: '.prev-btn',
+    },
+    // Wenn der Nutzer zieht, soll das native Klick-Event nicht feuern
+    preventClicks: true,
+    preventClicksPropagation: true
+});
