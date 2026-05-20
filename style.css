@@ -123,15 +123,79 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-sp
 .bg-about { background: var(--bg-about); }
 .bg-portfolio { background: var(--bg-portfolio); }
 .bg-contact { background: var(--bg-contact); }
-.hero h1 { font-size: 4.5rem; letter-spacing: 8px; margin-bottom: 25px; text-transform: uppercase; }
-.hero p { font-size: 1.2rem; letter-spacing: 1.5px; color: var(--text-muted); max.width: 650px; marging: 0 auto; line-height: 1.8; font-style: italic;
-.about-content { max-width: 700px; margin: 0 auto; text-align: center; font-size: 1.1rem; color: var(--text-muted); }
+
+/* --- Hero --- */
+.hero h1 { 
+    font-size: 4.5rem; 
+    letter-spacing: 8px; 
+    margin-bottom: 25px;
+    text-transform: uppercase; 
+}
+.hero p { 
+    font-size: 1.2rem; 
+    letter-spacing: 1.5px; 
+    color: var(--text-muted); 
+    max-width: 650px; 
+    margin: 0 auto; 
+    line-height: 1.8; 
+    font-style: italic; 
+}
+
+/* --- About Sektion (Grid & Bild) --- */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.about-image {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+}
+.about-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.about-image:hover .about-img {
+    transform: scale(1.03);
+}
+.about-text {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+.about-text p {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+.about-text strong {
+    color: var(--text-dark);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.about-location {
+    margin-top: 1rem;
+    font-family: 'Playfair Display', serif !important;
+    font-size: 1.3rem !important;
+    font-style: italic;
+    color: var(--text-dark) !important;
+    border-top: 1px solid var(--input-border);
+    padding-top: 1.5rem;
+}
 
 /* --- Portfolio Infinity Slider (Swiper) --- */
 .portfolio-slider-wrapper { position: relative; display: flex; align-items: center; max-width: 1200px; margin: 0 auto; }
 .album-swiper { width: 100%; padding: 30px 0; overflow: hidden; }
 
-/* Die Karten-Breite steuert das Layout im Loop */
 .swiper-slide {
     width: 380px !important; 
     position: relative; 
@@ -139,8 +203,6 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-sp
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
-
-/* Optional: Die Karte, die in der Mitte ist, leicht hervorheben */
 .swiper-slide-active {
     transform: scale(1.02);
     box-shadow: 0 15px 40px rgba(0,0,0,0.1);
@@ -194,14 +256,21 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-sp
 .lightbox-close:hover { color: var(--baby-pink); }
 
 /* --- Mobile Queries --- */
+@media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-text { text-align: center; }
+    .about-location { border-top: none; border-bottom: 1px solid var(--input-border); padding-bottom: 1.5rem; }
+}
+
 @media (max-width: 768px) {
     .nav-links { display: none; }
     .hamburger { display: flex; } 
     .modal-content { column-count: 1; }
     .hero h1 { font-size: 2.8rem; }
+    .hero p { font-size: 1rem; padding: 0 15px; }
     .section { padding: 6rem 5%; }
     .logo-img { width: 110px; }
     
-    .swiper-slide { width: 85vw !important; } /* Karten sind fast bildschirmfüllend auf dem Handy */
-    .slider-btn { display: none; } /* Keine Pfeile auf Mobile, Swipe regelt */
+    .swiper-slide { width: 85vw !important; }
+    .slider-btn { display: none; }
 }
