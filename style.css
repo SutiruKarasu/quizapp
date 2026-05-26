@@ -264,12 +264,12 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-sp
     .about-location { border-top: none; border-bottom: 1px solid var(--input-border); padding-bottom: 1.5rem; }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
     .nav-links { display: none; }
     .hamburger { display: flex; } 
     .modal-content { column-count: 1; }
     .hero h1 { font-size: 2.8rem; }
-    .hero p { font-size: 1rem; padding: 0 15px; }
+    .hero p { font-size: 1.5rem; padding: 0 15px; }
     .section { padding: 6rem 5%; }
     .logo-img { width: 110px; }
     
