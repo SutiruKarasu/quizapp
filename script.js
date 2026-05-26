@@ -200,17 +200,3 @@ const albumSwiper = new Swiper('.album-swiper', {
         separateDialCode: true
     });
 
-const infoBtn = document.getElementById('info-btn');
-const infoWindow = document.getElementById('info-window');
-if (infoBtn && info windows) {
-    infoBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        infoWindow.classList.toggle('show');
-    });
-
-    document.AddEventListener('click'), () => {
-        infoWindow.classList.remove('show');
-    });
-}
-
-
