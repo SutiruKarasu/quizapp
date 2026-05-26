@@ -119,7 +119,7 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-sp
 
 
 .section { padding: 8rem 10%; }
-.hero { background: var(--bg-hero); height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; }
+.hero { background: var(--bg-hero); height: 100vh; display: flex; flex-direction: colum; align-items: center; justify-content: center; text-align: center; }
 .bg-about { background: var(--bg-about); }
 .bg-portfolio { background: var(--bg-portfolio); }
 .bg-contact { background: var(--bg-contact); }
