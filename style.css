@@ -1,4 +1,4 @@
-/* --- CSS Variablen --- */
+
 :root {
     --powder-blue: #B0E0E6;
     --baby-pink: #F4C2C2;
@@ -32,7 +32,7 @@ body.dark-mode {
     --modal-bg: rgba(18, 20, 24, 0.99);
 }
 
-/* --- Dark Mode Logo Invertierung --- */
+
 body.dark-mode .navbar .logo .logo-img,
 body.dark-mode img.logo-img {
     filter: invert(1) brightness(1.2) !important;
@@ -40,7 +40,7 @@ body.dark-mode img.logo-img {
     transform: translateY(-48%); 
 }
 
-/* --- Global --- */
+
 html { scroll-behavior: smooth; scroll-padding-top: 85px; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
@@ -61,7 +61,7 @@ body {
 }
 .fade-in-section.is-visible { opacity: 1; transform: none; visibility: visible; }
 
-/* --- Custom Cursor --- */
+
 .custom-cursor {
     width: 20px; height: 20px; border: 1px solid var(--baby-pink); border-radius: 50%;
     position: fixed; transform: translate(-50%, -50%); pointer-events: none; z-index: 9999;
@@ -76,12 +76,12 @@ body {
     background-color: rgba(176, 224, 230, 0.3); border-color: var(--powder-blue);
 }
 
-/* --- Typografie --- */
+
 h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-spacing: 1px; }
 .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 4rem; text-transform: uppercase; letter-spacing: 3px; }
 .section-title::after { content: ''; display: block; width: 40px; height: 1px; background-color: var(--baby-pink); margin: 20px auto 0; }
 
-/* --- Navigation --- */
+
 .navbar {
     display: flex; justify-content: space-between; align-items: center; height: 85px; 
     padding: 0 5%; position: fixed; width: 100%; background: var(--navbar-bg);
@@ -117,14 +117,14 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-sp
 .mobile-nav-links li { margin: 2.5rem 0; }
 .mobile-nav-links a { text-decoration: none; color: var(--text-dark); font-family: 'Playfair Display', serif; font-size: 2rem; letter-spacing: 2px; text-transform: uppercase; }
 
-/* --- Sektionen --- */
+
 .section { padding: 8rem 10%; }
 .hero { background: var(--bg-hero); height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; }
 .bg-about { background: var(--bg-about); }
 .bg-portfolio { background: var(--bg-portfolio); }
 .bg-contact { background: var(--bg-contact); }
 
-/* --- Hero --- */
+
 .hero h1 { 
     font-size: 4.5rem; 
     letter-spacing: 8px; 
@@ -141,7 +141,7 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-sp
     font-style: italic; 
 }
 
-/* --- About Sektion (Grid & Bild) --- */
+
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -192,7 +192,7 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-sp
     padding-top: 1.5rem;
 }
 
-/* --- Portfolio Infinity Slider (Swiper) --- */
+
 .portfolio-slider-wrapper { position: relative; display: flex; align-items: center; max-width: 1200px; margin: 0 auto; }
 .album-swiper { width: 100%; padding: 30px 0; overflow: hidden; }
 
@@ -215,7 +215,7 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-sp
     background: linear-gradient(transparent, rgba(0, 0, 0, 0.7)); color: white; text-align: center; font-size: 1.3rem; letter-spacing: 1px;
 }
 
-/* Slider Pfeile (PC) */
+
 .slider-btn {
     background: var(--navbar-bg); color: var(--text-dark); border: 1px solid var(--input-border);
     border-radius: 50%; width: 50px; height: 50px; font-size: 1.2rem; display: flex; justify-content: center; align-items: center;
@@ -225,7 +225,7 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-sp
 .next-btn { right: -25px; }
 .slider-btn:hover { background: var(--baby-pink); color: #fff; border-color: var(--baby-pink); transform: scale(1.1); }
 
-/* --- Formular --- */
+
 .contact-form { max-width: 600px; margin: 0 auto; }
 .form-group { margin-bottom: 2rem; }
 .form-group label { display: block; margin-bottom: 0.6rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
@@ -240,7 +240,7 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-sp
 }
 .submit-btn:hover { background-color: var(--powder-blue); }
 
-/* --- Modal & Lightbox --- */
+
 .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: var(--modal-bg); overflow-y: auto; transition: background-color 0.5s ease; }
 .close-modal { position: fixed; top: 30px; right: 40px; font-size: 2.5rem; font-weight: 200; color: var(--text-dark); z-index: 2001; transition: color 0.3s; }
 .close-modal:hover { color: var(--baby-pink); }
@@ -255,7 +255,7 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-sp
 .lightbox-close { position: absolute; top: 30px; right: 40px; font-size: 3rem; color: #ffffff; font-weight: 200; }
 .lightbox-close:hover { color: var(--baby-pink); }
 
-/* --- Mobile Queries --- */
+
 @media (max-width: 900px) {
     .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .about-text { text-align: center; }
