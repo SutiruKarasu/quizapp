@@ -137,7 +137,7 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-sp
     letter-spacing: 1.5px; 
     color: var(--text-muted);
     white-space: nowrap;
-    max-width: 100%; 
+    max-width: 900px; 
     margin: 0 auto; 
     line-height: 1.8;  
 }
