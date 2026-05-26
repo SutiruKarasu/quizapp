@@ -193,11 +193,10 @@ const albumSwiper = new Swiper('.album-swiper', {
     preventClicksPropagation: true
 });
 
-<script>
     const phoneInputField = document.querySelector("#phone");
     const phoneInput = window.intlTelInput(phoneInputField, {
         utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
         initialCountry "cz",
         separateDialCode: true
     });
-</script>
+
