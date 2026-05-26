@@ -132,13 +132,13 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-sp
     text-transform: uppercase; 
 }
 .hero p { 
+    font-family: 'Italianno',    cursive;
     font-size: 1.2rem; 
     letter-spacing: 1.5px; 
     color: var(--text-muted); 
     max-width: 650px; 
     margin: 0 auto; 
-    line-height: 1.8; 
-    font-style: italic; 
+    line-height: 1.8;  
 }
 
 
