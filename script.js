@@ -179,16 +179,25 @@ if(contactForm) {
 
 
 const albumSwiper = new Swiper('.album-swiper', {
-    loop: true,                 // Der endlose Infinity Loop
-    slidesPerView: 'auto',      // Passt sich perfekt den 380px Karten an
-    spaceBetween: 40,           // Abstand (2.5rem)
-    centeredSlides: true,       // Karte schnappt exakt in der Mitte ein
-    speed: 600,                 // Geschmeidige Übergangsgeschwindigkeit
+    loop: true,                 
+    slidesPerView: 'auto',      
+    spaceBetween: 40,           
+    centeredSlides: true,       
+    speed: 600,                 
     navigation: {
-        nextEl: '.next-btn',    // Deine Custom Buttons
+        nextEl: '.next-btn',    
         prevEl: '.prev-btn',
     },
 
     preventClicks: true,
     preventClicksPropagation: true
 });
+
+<script>
+    const phoneInputField = document.querySelector("#phone");
+    const phoneInput = window.intlTelInput(phoneInputField, {
+        untilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        initialCountry "cz",
+        separateDialCode: true
+    });
+</script>
