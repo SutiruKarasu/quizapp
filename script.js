@@ -1,4 +1,3 @@
-
 const themeToggle = document.getElementById('theme-toggle');
 
 if (localStorage.getItem('theme') === 'dark') {
@@ -68,8 +67,7 @@ document.addEventListener('mousemove', e => {
 });
 
 function setupCursorListeners() {
-    // Hier fügen wir .swiper-slide hinzu, damit der Cursor auch bei den neuen Karten reagiert
-    document.querySelectorAll('a, button, .swiper-slide, select, .close-modal, .lightbox-close, .modal-content img, .slider-btn').forEach(item => {
+    document.querySelectorAll('a, button, .swiper-slide, select, .close-modal, .lightbox-close, .modal-content img, .slider-btn, .info-btn').forEach(item => {
         item.addEventListener('mouseenter', () => cursor.classList.add('hover'));
         item.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
     });
@@ -160,6 +158,8 @@ window.onclick = function(event) {
         closeLightbox();
     } else if (event.target == modal) {
         closeAlbum();
+    } else if (event.target == infoModal) {
+        closeInfoModal();
     }
 }
 
@@ -179,7 +179,7 @@ if(contactForm) {
 
 
 const albumSwiper = new Swiper('.album-swiper', {
-    loop: true,                 
+    loop: true,                  
     slidesPerView: 'auto',      
     spaceBetween: 40,           
     centeredSlides: true,       
@@ -193,10 +193,28 @@ const albumSwiper = new Swiper('.album-swiper', {
     preventClicksPropagation: true
 });
 
-    const phoneInputField = document.querySelector("#phone");
-    const phoneInput = window.intlTelInput(phoneInputField, {
-        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-        initialCountry: "cz",
-        separateDialCode: true
-    });
+const phoneInputField = document.querySelector("#phone");
+const phoneInput = window.intlTelInput(phoneInputField, {
+    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    initialCountry: "cz",
+    separateDialCode: true
+});
 
+
+const infoBtn = document.getElementById('info-btn');
+const infoModal = document.getElementById('info-modal');
+const closeInfo = document.getElementById('close-info');
+
+infoBtn.addEventListener('click', () => {
+    infoModal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+});
+
+function closeInfoModal() {
+    infoModal.style.display = 'none';
+    if (!modal.style.display || modal.style.display === 'none') {
+        document.body.style.overflow = 'auto';
+    }
+}
+
+closeInfo.addEventListener('click', closeInfoModal);
