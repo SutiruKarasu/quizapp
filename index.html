@@ -136,35 +136,32 @@
         </form>
     </section>
 
-    <!-- Album Modal -->
     <div id="album-modal" class="modal">
         <span class="close-modal" onclick="closeAlbum()">&times;</span>
         <div class="modal-content" id="modal-gallery"></div>
     </div>
 
-    <!-- Lightbox -->
     <div id="lightbox" class="lightbox">
         <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
         <img id="lightbox-img" src="" alt="Fullscreen Photography">
     </div>
 
-    <!-- NEU: Info Button Unten Rechts -->
-    <button id="info-btn" class="info-btn" aria-label="Impressum Info">?</button>
-
-    <!-- NEU: Info Modal für Impressum & Responsible -->
-    <div id="info-modal" class="modal info-modal">
-        <div class="modal-content info-content">
-            <span class="close-modal" id="close-info">&times;</span>
+    <!-- Info Button & Modal -->
+    <button id="info-btn" class="info-btn" aria-label="Legal Info">?</button>
+    <div id="info-modal" class="modal">
+        <span class="close-modal" id="close-info">&times;</span>
+        <div class="legal-content">
             <div class="legal-section">
                 <h2>Impressum</h2>
                 <p><strong>Tatiana Lumos</strong></p>
+                <p>Photography & Visual Arts</p>
                 <p>Prague, Czech Republic</p>
-                <p>Email: contact@tatianalumos.com</p>
             </div>
-            <hr class="legal-divider">
+            <div class="legal-divider"></div>
             <div class="legal-section">
-                <h2>Responsible for the content (V.i.S.d.P.)</h2>
+                <h2>Responsible for content</h2>
                 <p><strong>Edi Kolgeci</strong></p>
+                <p>Web Development & Design</p>
                 <p>Prague, Czech Republic</p>
             </div>
         </div>
