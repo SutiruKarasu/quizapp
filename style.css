@@ -274,4 +274,18 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-sp
     .swiper-slide { width: 85vw !important; }
     .slider-btn { display: none; }
     .info-btn { bottom: 20px; right: 20px; width: 40px; height: 40px; }
+   
 }
+
+.legal-link {
+    color: var(--text-dark);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--baby-pink);
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.legal-link:hover {
+    color: var(--powder-blue);
+    border-bottom-color: var(--powder-blue);
+}
+
