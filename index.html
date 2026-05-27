@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap"    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.min.css"/>
 </head>
 <body>
@@ -136,14 +136,38 @@
         </form>
     </section>
 
+    <!-- Album Modal -->
     <div id="album-modal" class="modal">
         <span class="close-modal" onclick="closeAlbum()">&times;</span>
         <div class="modal-content" id="modal-gallery"></div>
     </div>
 
+    <!-- Lightbox -->
     <div id="lightbox" class="lightbox">
         <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
         <img id="lightbox-img" src="" alt="Fullscreen Photography">
+    </div>
+
+    <!-- NEU: Info Button Unten Rechts -->
+    <button id="info-btn" class="info-btn" aria-label="Impressum Info">?</button>
+
+    <!-- NEU: Info Modal für Impressum & Responsible -->
+    <div id="info-modal" class="modal info-modal">
+        <div class="modal-content info-content">
+            <span class="close-modal" id="close-info">&times;</span>
+            <div class="legal-section">
+                <h2>Impressum</h2>
+                <p><strong>Tatiana Lumos</strong></p>
+                <p>Prague, Czech Republic</p>
+                <p>Email: contact@tatianalumos.com</p>
+            </div>
+            <hr class="legal-divider">
+            <div class="legal-section">
+                <h2>Responsible for the content (V.i.S.d.P.)</h2>
+                <p><strong>Edi Kolgeci</strong></p>
+                <p>Prague, Czech Republic</p>
+            </div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
