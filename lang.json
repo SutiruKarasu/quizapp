@@ -15,7 +15,7 @@
     "contact_title": "Get in Touch",
     "form_name": "Name",
     "form_email": "Email",
-    "form_phone": "Phone Number",
+    "form_number": "Phone Number",
     "form_message": "Message",
     "btn_send": "Send Message"
   },
@@ -35,7 +35,7 @@
     "contact_title": "Ozvěte se mi",
     "form_name": "Jméno",
     "form_email": "E-mail",
-    "form_phone": "Telefonní číslo",
+    "form_number": "Telefonní číslo",
     "form_message": "Zpráva",
     "btn_send": "Odeslat zprávu"
   },
@@ -55,7 +55,7 @@
     "contact_title": "Связаться",
     "form_name": "Имя",
     "form_email": "Электронная почта",
-    "form_phone": "Номер телефона",
+    "form_number": "Номер телефона",
     "form_message": "Сообщение",
     "btn_send": "Отправить"
   }
