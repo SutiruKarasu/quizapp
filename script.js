@@ -36,17 +36,17 @@ function toggleMobileMenu() {
 
 let translations = {};
 
-// --- Sprach-Logik mit Auto-Erkennung ---
+
 fetch('lang.json')
     .then(response => response.json())
     .then(data => {
         translations = data;
         
-        // Auto-Erkennung der Sprache
+
         const savedLang = localStorage.getItem('userLang');
         const browserLang = navigator.language.split('-')[0]; // z.B. 'cs' von 'cs-CZ'
         
-        // Wähle: Gespeicherte Sprache > Browser-Sprache > Default 'en'
+
         const initialLang = savedLang || (translations[browserLang] ? browserLang : 'en');
         
         setLanguage(initialLang);
@@ -66,7 +66,7 @@ function setLanguage(lang) {
     elements.forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (translations[lang] && translations[lang][key]) {
-            el.innerHTML = translations[lang][key]; // <-- Jetzt rendert es HTML!
+            el.innerHTML = translations[lang][key]; 
         }
     });
 }
