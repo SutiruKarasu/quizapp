@@ -289,3 +289,73 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-sp
     border-bottom-color: var(--powder-blue);
 }
 
+/* =========================================
+   Instagram Button
+   ========================================= */
+.ig-btn {
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease, transform 0.3s ease;
+    margin-right: 10px;
+}
+.ig-btn:hover {
+    color: var(--powder-blue);
+    transform: scale(1.1);
+}
+
+/* =========================================
+   Easteregg: Camera Flash
+   ========================================= */
+#camera-flash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    z-index: 99999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.1s ease-out;
+}
+#camera-flash.flash-active {
+    opacity: 1;
+    transition: opacity 0.05s ease-in;
+}
+
+/* =========================================
+   Mobile "About Me" Accordion
+   ========================================= */
+.read-more-btn {
+    display: none; /* Am Desktop versteckt */
+    background: transparent;
+    border: 1px solid var(--input-border);
+    color: var(--text-dark);
+    padding: 10px 20px;
+    font-family: 'Lato', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 15px;
+    transition: all 0.3s;
+}
+.read-more-btn:hover {
+    background: var(--baby-pink);
+    color: white;
+    border-color: var(--baby-pink);
+}
+
+@media (max-width: 900px) {
+    .about-more-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.6s ease-in-out;
+    }
+    .about-more-content.expanded {
+        max-height: 2000px; /* Genug Platz für den gesamten Text */
+    }
+    .read-more-btn {
+        display: inline-block; /* Auf Mobile anzeigen */
+    }
+}
+
