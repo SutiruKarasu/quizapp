@@ -289,9 +289,7 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-sp
     border-bottom-color: var(--powder-blue);
 }
 
-/* =========================================
-   Instagram Button
-   ========================================= */
+
 .ig-btn {
     color: var(--text-dark);
     display: flex;
@@ -304,9 +302,6 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-sp
     transform: scale(1.1);
 }
 
-/* =========================================
-   Easteregg: Camera Flash
-   ========================================= */
 #camera-flash {
     position: fixed;
     top: 0;
@@ -324,11 +319,9 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-sp
     transition: opacity 0.05s ease-in;
 }
 
-/* =========================================
-   Mobile "About Me" Accordion
-   ========================================= */
+
 .read-more-btn {
-    display: none; /* Am Desktop versteckt */
+    display: none; 
     background: transparent;
     border: 1px solid var(--input-border);
     color: var(--text-dark);
