@@ -267,8 +267,8 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-sp
     .nav-links { display: none; }
     .hamburger { display: flex; } 
     .modal-content { column-count: 1; }
-    .hero h1 { font-size: 2.8rem; }
-    .hero p { font-size: 1.5rem; padding: 0 15px; }
+    .hero h1 { font-size: 2.2rem; }
+    .hero p { font-size: 1.2rem; padding: 0 15px; white-space: normal; line-height: 1.5; }
     .section { padding: 6rem 5%; }
     .logo-img { width: 110px; }
     .swiper-slide { width: 85vw !important; }
