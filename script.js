@@ -232,23 +232,23 @@ function closeInfoModal() {
 
 closeInfo.addEventListener('click', closeInfoModal);
 
-// --- Easteregg: Camera Flash on Logo Click ---
+
 const logoImage = document.querySelector('.logo-img');
 const flashOverlay = document.getElementById('camera-flash');
 
 if (logoImage && flashOverlay) {
     logoImage.addEventListener('click', (e) => {
-        // Fügt die Flash-Klasse hinzu
+       
         flashOverlay.classList.add('flash-active');
         
-        // Entfernt sie nach 100ms wieder (kurzer Blitz)
+        
         setTimeout(() => {
             flashOverlay.classList.remove('flash-active');
         }, 100);
     });
 }
 
-// --- Mobile About Me Collapse ---
+
 const readMoreBtn = document.getElementById('read-more-btn');
 const aboutMoreContent = document.getElementById('about-more');
 
@@ -256,7 +256,7 @@ if (readMoreBtn && aboutMoreContent) {
     readMoreBtn.addEventListener('click', () => {
         aboutMoreContent.classList.toggle('expanded');
         
-        // Button-Text dynamisch anpassen
+        
         if (aboutMoreContent.classList.contains('expanded')) {
             readMoreBtn.textContent = 'Read Less';
         } else {
