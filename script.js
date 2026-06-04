@@ -9,10 +9,10 @@ themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
     if (document.body.classList.contains('dark-mode')) {
         localStorage.setItem('theme', 'dark');
-        themeToggle.textContent = 'вЂпёЏ';
+        themeToggle.textContent = '🌙';
     } else {
         localStorage.setItem('theme', 'light');
-        themeToggle.textContent = 'рџЊ™';
+        themeToggle.textContent = '☀️';
     }
 });
 
