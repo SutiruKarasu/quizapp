@@ -350,5 +350,20 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-sp
     .read-more-btn {
         display: inline-block; /* Auf Mobile anzeigen */
     }
+
+    
+[data-i18n="hero_subtitle"] {
+    font-family: 'Playfair Display', serif !important; 
+    font-style: italic; 
+    font-size: 1.5rem !important; 
+    line-height: 1.4;
+}
+
+
+@media (max-width: 600px) {
+    [data-i18n="hero_subtitle"] {
+        font-size: 1.1rem !important;
+    }
+}
 }
 
