@@ -1,9 +1,9 @@
 :root {
-    --powder-blue: #B0E0E6;
-    --baby-pink: #F4C2C2;
+    --powder-blue: #00aaff;
+    --baby-pink: #00aaff;
     --bg-main: #ffffff;
-    --bg-hero: linear-gradient(135deg, rgba(176, 224, 230, 0.35) 0%, rgba(244, 194, 194, 0.35) 100%);
-    --bg-about: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(176, 224, 230, 0.15) 100%);
+    --bg-hero: linear-gradient(135deg, rgba(255, 51, 136, 0.2), rgba(0, 170, 255, 0.2));
+    --bg-about: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(240, 240, 240, 1));
     --bg-portfolio: linear-gradient(180deg, rgba(176, 224, 230, 0.15) 0%, rgba(244, 194, 194, 0.15) 100%);
     --bg-contact: linear-gradient(180deg, rgba(244, 194, 194, 0.15) 0%, rgba(255,255,255,1) 100%);
     --text-dark: #1a1a1a;
