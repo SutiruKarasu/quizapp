@@ -120,15 +120,20 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-sp
     margin-bottom: 25px;
     text-transform: uppercase; 
 }
+
+/* KOMPLETT ÜBERARBEITETER UNTERTITEL */
 .hero p { 
-    font-family: 'Italianno', cursive;
-    font-size: 3.0rem; 
-    text-align: center;
+    font-family: 'Playfair Display', serif; /* Unterstützt alle Sprachen perfekt */
+    font-style: italic; /* Macht es überall schön kursiv */
+    font-size: clamp(1.1rem, 2.5vw, 2rem); /* Dynamische Größe */
+    text-align: center; /* Verhindert das blockige Aussehen */
     letter-spacing: 1.5px; 
     color: var(--text-muted);
-    white-space: nowrap;
-    line-height: 1.8;  
-    margin: 0;
+    line-height: 1.6;  
+    margin: 0 auto;
+    max-width: 800px; /* Bricht den Text elegant um, bevor er zu lang wird */
+    padding: 0 20px;
+    word-break: break-word; /* Verhindert das Herausschieben über den Rand */
 }
 
 .about-grid {
@@ -240,7 +245,6 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-sp
 .lightbox-close { position: absolute; top: 30px; right: 40px; font-size: 3rem; color: #ffffff; font-weight: 200; }
 .lightbox-close:hover { color: var(--baby-pink); }
 
-
 .info-btn {
     position: fixed; bottom: 30px; right: 30px; width: 45px; height: 45px;
     background: var(--navbar-bg); color: var(--text-dark); border: 1px solid var(--input-border);
@@ -257,26 +261,6 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-sp
 .legal-section p { margin-bottom: 0.5rem; color: var(--text-muted); font-size: 1rem; }
 .legal-divider { width: 60px; height: 1px; background: var(--baby-pink); margin: 3rem 0; opacity: 0.5; }
 
-@media (max-width: 900px) {
-    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .about-text { text-align: center; }
-    .about-location { border-top: none; border-bottom: 1px solid var(--input-border); padding-bottom: 1.5rem; }
-}
-
-@media (max-width: 600px) {
-    .nav-links { display: none; }
-    .hamburger { display: flex; } 
-    .modal-content { column-count: 1; }
-    .hero h1 { font-size: 2.2rem; }
-    .hero p { font-size: 1.2rem; padding: 0 15px; white-space: normal; line-height: 1.5; }
-    .section { padding: 6rem 5%; }
-    .logo-img { width: 110px; }
-    .swiper-slide { width: 85vw !important; }
-    .slider-btn { display: none; }
-    .info-btn { bottom: 20px; right: 20px; width: 40px; height: 40px; }
-   
-}
-
 .legal-link {
     color: var(--text-dark);
     text-decoration: none;
@@ -288,7 +272,6 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-sp
     color: var(--powder-blue);
     border-bottom-color: var(--powder-blue);
 }
-
 
 .ig-btn {
     color: var(--text-dark);
@@ -319,7 +302,6 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-sp
     transition: opacity 0.05s ease-in;
 }
 
-
 .read-more-btn {
     display: none; 
     background: transparent;
@@ -339,31 +321,32 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-sp
 }
 
 @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-text { text-align: center; }
+    .about-location { border-top: none; border-bottom: 1px solid var(--input-border); padding-bottom: 1.5rem; }
+    
     .about-more-content {
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.6s ease-in-out;
     }
     .about-more-content.expanded {
-        max-height: 2000px; /* Genug Platz für den gesamten Text */
+        max-height: 2000px;
     }
     .read-more-btn {
-        display: inline-block; /* Auf Mobile anzeigen */
+        display: inline-block;
     }
-
-    
-[data-i18n="hero_subtitle"] {
-    font-family: 'Playfair Display', serif !important; 
-    font-style: italic; 
-    font-size: 1.5rem !important; 
-    line-height: 1.4;
 }
-
 
 @media (max-width: 600px) {
-    [data-i18n="hero_subtitle"] {
-        font-size: 1.1rem !important;
-    }
+    .nav-links { display: none; }
+    .hamburger { display: flex; } 
+    .modal-content { column-count: 1; }
+    .hero h1 { font-size: 2.2rem; }
+    .hero p { padding: 0 15px; } /* clamp übernimmt die Größe */
+    .section { padding: 6rem 5%; }
+    .logo-img { width: 110px; }
+    .swiper-slide { width: 85vw !important; }
+    .slider-btn { display: none; }
+    .info-btn { bottom: 20px; right: 20px; width: 40px; height: 40px; }
 }
-}
-
