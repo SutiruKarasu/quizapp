@@ -30,8 +30,10 @@
     "legal_impressum": "Impressum",
     "legal_photo": "Photography & Visual Arts",
     "legal_location": "Prague, Czech Republic",
+    "legal_company_id": "Company Identification Number: 23149931",
     "legal_resp": "Responsible for content",
-    "legal_dev": "Web Development & Design"
+    "legal_dev": "Web Development & Design",
+    "nav_voucher": "Voucher"
   },
   "cs": {
     "nav_home": "Domů",
@@ -64,8 +66,10 @@
     "legal_impressum": "Tiráž",
     "legal_photo": "Fotografie a Vizuální Umění",
     "legal_location": "Praha, Česká republika",
+    "legal_company_id": "IČO: 23149931",
     "legal_resp": "Odpovědnost za obsah",
-    "legal_dev": "Vývoj a Design Webových Stránek"
+    "legal_dev": "Vývoj a Design Webových Stránek",
+    "nav_voucher": "Poukaz"
   },
   "ru": {
     "nav_home": "Главная",
@@ -98,7 +102,9 @@
     "legal_impressum": "Импрессум",
     "legal_photo": "Фотография и Визуальные Искусства",
     "legal_location": "Прага, Чешская Республика",
+    "legal_company_id": "Идентификационный Номер Организации: 23149931",
     "legal_resp": "Ответственный за контент",
-    "legal_dev": "Веб-разработка и Дизайн"
+    "legal_dev": "Веб-разработка и Дизайн",
+    "nav_voucher": "Сертификат"
   }
 }

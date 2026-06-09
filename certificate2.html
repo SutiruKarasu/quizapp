@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Voucher | Tatiana Lumos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Lato:wght@200;300;400&family=Italianno&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body { height: 100%; }
+
+        body {
+            background: #0c0c0e;
+            color: #e5ddd4;
+            font-family: 'Lato', sans-serif;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        /* ── TOP BAR ── */
+        .top-bar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 4%;
+            background: rgba(12, 12, 14, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .tb-back {
+            text-decoration: none;
+            color: rgba(229, 221, 212, 0.5);
+            font-size: 0.72rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        .tb-back:hover { color: rgba(255, 20, 100, 0.9); }
+
+        .tb-brand {
+            font-family: 'Italianno', cursive;
+            font-size: 2rem;
+            color: #fff;
+            text-decoration: none;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .lang-pills {
+            display: flex;
+            gap: 0;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 40px;
+            overflow: hidden;
+        }
+        .lang-pill {
+            background: transparent;
+            border: none;
+            color: rgba(229, 221, 212, 0.45);
+            padding: 0.35rem 0.9rem;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.68rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+        .lang-pill.active {
+            background: linear-gradient(135deg, rgba(255, 20, 100, 0.8), rgba(0, 140, 255, 0.8));
+            color: #fff;
+        }
+        .lang-pill:hover:not(.active) {
+            color: rgba(229, 221, 212, 0.9);
+            background: rgba(255,255,255,0.06);
+        }
+
+        /* ── LAYOUT ── */
+        .page-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+            padding-top: 68px;
+        }
+
+        /* ── LEFT PANEL (sticky image) ── */
+        .panel-left {
+            position: sticky;
+            top: 68px;
+            height: calc(100vh - 68px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 3rem;
+            overflow: hidden;
+        }
+
+        .panel-left::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 60% 50% at 30% 60%, rgba(255, 20, 100, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 50% at 70% 40%, rgba(0, 140, 255, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            max-width: 440px;
+        }
+
+        .image-glow {
+            position: absolute;
+            inset: -30px;
+            background: radial-gradient(ellipse at 50% 50%,
+                rgba(255, 20, 100, 0.15) 0%,
+                rgba(0, 140, 255, 0.1) 50%,
+                transparent 70%
+            );
+            filter: blur(20px);
+            pointer-events: none;
+        }
+
+        .cert-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 30px 100px rgba(0,0,0,0.8);
+        }
+
+        .image-caption {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.68rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(229, 221, 212, 0.3);
+        }
+
+        /* ── RIGHT PANEL (scrollable content) ── */
+        .panel-right {
+            border-left: 1px solid rgba(255,255,255,0.06);
+            padding: 5rem 8% 6rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cert-section-v2 { display: none; flex-direction: column; gap: 2.2rem; }
+        .cert-section-v2.active { display: flex; animation: slideIn 0.5s cubic-bezier(0.22,1,0.36,1) both; }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+
+        .v2-eyebrow {
+            font-size: 0.68rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, rgba(255, 20, 100, 0.9), rgba(0, 140, 255, 0.9));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .v2-headline {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            font-style: italic;
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            color: #fff;
+            line-height: 1.25;
+        }
+
+        .v2-line {
+            width: 50px;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255, 20, 100, 0.7), rgba(0, 140, 255, 0.7));
+        }
+
+        .v2-para {
+            font-size: 1rem;
+            line-height: 1.95;
+            color: rgba(229, 221, 212, 0.72);
+            font-weight: 300;
+        }
+
+        .v2-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: rgba(229, 221, 212, 0.45);
+            margin-bottom: 0.4rem;
+        }
+
+        .v2-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+        .v2-list li {
+            font-size: 0.95rem;
+            color: rgba(229, 221, 212, 0.7);
+            padding: 0.6rem 1rem;
+            border-left: 2px solid rgba(255,255,255,0.07);
+            line-height: 1.5;
+            transition: border-color 0.3s, color 0.3s;
+        }
+        .v2-list li:hover {
+            border-left-color: rgba(255, 20, 100, 0.5);
+            color: rgba(229, 221, 212, 0.95);
+        }
+
+        .v2-validity {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            padding: 1.4rem 1.6rem;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.02);
+            border-radius: 2px;
+        }
+        .v2-validity-icon {
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+        .v2-validity-text {
+            font-size: 0.9rem;
+            color: rgba(229, 221, 212, 0.6);
+            line-height: 1.5;
+        }
+
+        .v2-cta-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        .v2-cta-note {
+            font-size: 0.85rem;
+            color: rgba(229, 221, 212, 0.4);
+            line-height: 1.7;
+        }
+        .v2-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            text-decoration: none;
+            padding: 0.95rem 2rem;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.78rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, rgba(255, 20, 100, 0.85) 0%, rgba(0, 140, 255, 0.85) 100%);
+            color: #fff;
+            border: none;
+            transition: all 0.3s ease;
+            width: fit-content;
+        }
+        .v2-btn:hover {
+            filter: brightness(1.15);
+            letter-spacing: 3.5px;
+        }
+
+        /* ── MOBILE ── */
+        @media (max-width: 860px) {
+            .page-layout {
+                grid-template-columns: 1fr;
+            }
+            .panel-left {
+                position: relative;
+                top: auto;
+                height: auto;
+                min-height: 60vw;
+                padding: 3rem 2rem;
+            }
+            .image-container { max-width: 320px; }
+            .panel-right {
+                border-left: none;
+                border-top: 1px solid rgba(255,255,255,0.06);
+                padding: 3.5rem 6% 5rem;
+            }
+            .tb-brand { display: none; }
+        }
+        @media (max-width: 480px) {
+            .top-bar { padding: 1rem 5%; }
+            .lang-pills { display: none; }
+            .panel-right { padding: 2.5rem 5% 4rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP BAR -->
+    <header class="top-bar">
+        <a href="index.html" class="tb-back">← Back</a>
+        <a href="index.html" class="tb-brand">Tatiana Lumos</a>
+        <div class="lang-pills">
+            <button class="lang-pill" data-lang="cs">CS</button>
+            <button class="lang-pill active" data-lang="en">EN</button>
+            <button class="lang-pill" data-lang="ru">RU</button>
+        </div>
+    </header>
+
+    <div class="page-layout">
+
+        <!-- LEFT: sticky certificate image -->
+        <aside class="panel-left">
+            <div class="image-container">
+                <div class="image-glow"></div>
+                <img src="bilder/certificate.png" alt="Tatiana Lumos Photography Gift Voucher" class="cert-img">
+                <p class="image-caption" id="img-caption">Photography Gift Voucher</p>
+            </div>
+        </aside>
+
+        <!-- RIGHT: scrollable text -->
+        <main class="panel-right">
+
+            <!-- ENGLISH -->
+            <article class="cert-section-v2 active" id="v2-section-en">
+                <p class="v2-eyebrow">Tatiana Lumos · Photography Gift Voucher</p>
+                <h1 class="v2-headline">A gift that won't gather dust.</h1>
+                <div class="v2-line"></div>
+                <p class="v2-para">The most valuable gifts aren't things — they're moments we want to keep forever.</p>
+                <p class="v2-para">My photography gift voucher is a way to give your loved ones beautiful emotions, a unique experience, and photographs they'll cherish and return to again and again. 🤍</p>
+                <p class="v2-para">Each voucher is made from plexiglass and designed as a small piece of art. It's a joy to give and an even greater joy to receive.</p>
+                <div>
+                    <p class="v2-subtitle">Perfect as a gift for:</p>
+                    <ul class="v2-list">
+                        <li>🌙 &nbsp;Birthdays</li>
+                        <li>💙 &nbsp;Anniversaries</li>
+                        <li>✨ &nbsp;Name days or any special occasion</li>
+                        <li>📷 &nbsp;Or simply to bring joy to someone you care about</li>
+                    </ul>
+                </div>
+                <div class="v2-validity">
+                    <span class="v2-validity-icon">🕐</span>
+                    <span class="v2-validity-text">The voucher is valid for <strong style="color:#e5ddd4;">1 year</strong> from the date of purchase.</span>
+                </div>
+                <div class="v2-cta-group">
+                    <p class="v2-cta-note">To order, send me a direct message or contact me using the details provided.</p>
+                    <a href="https://instagram.com/tatiana_lumos" target="_blank" class="v2-btn">Order via Instagram →</a>
+                </div>
+            </article>
+
+            <!-- CZECH -->
+            <article class="cert-section-v2" id="v2-section-cs">
+                <p class="v2-eyebrow">Tatiana Lumos · Dárkový Poukaz na Fotografování</p>
+                <h1 class="v2-headline">Dárek, na který se nebude prášit.</h1>
+                <div class="v2-line"></div>
+                <p class="v2-para">Ty nejcennější dárky nejsou věci, ale okamžiky, které si chceme uchovat navždy.</p>
+                <p class="v2-para">Můj dárkový poukaz na fotografování je možnost darovat blízkému člověku krásné emoce, jedinečný zážitek a fotografie, ke kterým se bude rád vracet znovu a znovu. 🤍</p>
+                <p class="v2-para">Každý poukaz je vyroben z plexiskla a působí jako malý umělecký objekt. Je radost ho darovat a ještě větší radost ho dostat.</p>
+                <div>
+                    <p class="v2-subtitle">Hodí se jako dárek k:</p>
+                    <ul class="v2-list">
+                        <li>🌙 &nbsp;narozeninám</li>
+                        <li>💙 &nbsp;výročí</li>
+                        <li>✨ &nbsp;svátku nebo jiné výjimečné příležitosti</li>
+                        <li>📷 &nbsp;nebo jen tak, pro radost někomu, na kom vám záleží</li>
+                    </ul>
+                </div>
+                <div class="v2-validity">
+                    <span class="v2-validity-icon">🕐</span>
+                    <span class="v2-validity-text">Platnost poukazu je <strong style="color:#e5ddd4;">1 rok</strong> od data zakoupení.</span>
+                </div>
+                <div class="v2-cta-group">
+                    <p class="v2-cta-note">Pro objednávku mi napište zprávu do Directu nebo mě kontaktujte prostřednictvím uvedených kontaktů.</p>
+                    <a href="https://instagram.com/tatiana_lumos" target="_blank" class="v2-btn">Objednat přes Instagram →</a>
+                </div>
+            </article>
+
+            <!-- RUSSIAN -->
+            <article class="cert-section-v2" id="v2-section-ru">
+                <p class="v2-eyebrow">Tatiana Lumos · Подарочный Сертификат на Фотосессию</p>
+                <h1 class="v2-headline">Подарок, который не будет пылиться на полке.</h1>
+                <div class="v2-line"></div>
+                <p class="v2-para">Самые ценные подарки — это не вещи, а моменты, которые хочется сохранить навсегда.</p>
+                <p class="v2-para">Мой подарочный сертификат на фотосессию — это возможность подарить близкому человеку яркие эмоции, особенное впечатление и фотографии, к которым захочется возвращаться снова и снова. 🤍</p>
+                <p class="v2-para">Каждый сертификат изготовлен из оргстекла и выглядит как небольшой арт-объект. Его приятно дарить и ещё приятнее получать.</p>
+                <div>
+                    <p class="v2-subtitle">Подойдёт в качестве подарка на:</p>
+                    <ul class="v2-list">
+                        <li>🌙 &nbsp;День рождения</li>
+                        <li>💙 &nbsp;Годовщину</li>
+                        <li>✨ &nbsp;Именины или любой другой особенный повод</li>
+                        <li>📷 &nbsp;Или просто так — чтобы порадовать дорогого вам человека</li>
+                    </ul>
+                </div>
+                <div class="v2-validity">
+                    <span class="v2-validity-icon">🕐</span>
+                    <span class="v2-validity-text">Срок действия сертификата — <strong style="color:#e5ddd4;">1 год</strong> с момента покупки.</span>
+                </div>
+                <div class="v2-cta-group">
+                    <p class="v2-cta-note">Для заказа напишите мне в Direct или свяжитесь со мной по указанным контактам.</p>
+                    <a href="https://instagram.com/tatiana_lumos" target="_blank" class="v2-btn">Заказать через Instagram →</a>
+                </div>
+            </article>
+
+        </main>
+    </div>
+
+    <script>
+        const captions = {
+            en: 'Photography Gift Voucher',
+            cs: 'Dárkový Poukaz na Fotografování',
+            ru: 'Подарочный Сертификат на Фотосессию'
+        };
+
+        function switchLang(lang) {
+            document.querySelectorAll('.lang-pill').forEach(p => p.classList.remove('active'));
+            document.querySelector(`.lang-pill[data-lang="${lang}"]`)?.classList.add('active');
+
+            document.querySelectorAll('.cert-section-v2').forEach(s => s.classList.remove('active'));
+            const target = document.getElementById(`v2-section-${lang}`);
+            if (target) target.classList.add('active');
+
+            const cap = document.getElementById('img-caption');
+            if (cap) cap.textContent = captions[lang] || captions.en;
+
+            localStorage.setItem('userLang', lang);
+        }
+
+        document.querySelectorAll('.lang-pill').forEach(pill => {
+            pill.addEventListener('click', () => switchLang(pill.dataset.lang));
+        });
+
+        const saved = localStorage.getItem('userLang');
+        if (saved && ['en', 'cs', 'ru'].includes(saved)) switchLang(saved);
+    </script>
+</body>
+</html>
