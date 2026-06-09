@@ -2,7 +2,7 @@
     --powder-blue: #00aaff;
     --baby-pink: #00aaff;
     --bg-main: #ffffff;
-    --bg-hero: linear-gradient(135deg, rgba(255, 51, 136, 0.2), rgba(0, 170, 255, 0.2));
+    --bg-hero: linear-gradient(135deg, rgba(255, 20, 100, 0.72) 0%, rgba(170, 0, 200, 0.35) 45%, rgba(0, 140, 255, 0.72) 100%);
     --bg-about: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(240, 240, 240, 1));
     --bg-portfolio: linear-gradient(180deg, rgba(176, 224, 230, 0.15) 0%, rgba(244, 194, 194, 0.15) 100%);
     --bg-contact: linear-gradient(180deg, rgba(244, 194, 194, 0.15) 0%, rgba(255,255,255,1) 100%);
@@ -88,6 +88,10 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; letter-sp
 .nav-links { list-style: none; display: flex; gap: 3rem; }
 .nav-links a { text-decoration: none; color: var(--text-dark); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; transition: color 0.3s; }
 .nav-links a:hover { color: var(--powder-blue); }
+.voucher-link {
+    color: var(--powder-blue) !important;
+    letter-spacing: 2px;
+}
 .nav-controls { display: flex; align-items: center; gap: 1.5rem; }
 .theme-btn { background: none; border: none; font-size: 1.2rem; outline: none; transition: transform 0.3s ease; }
 .theme-btn:hover { transform: scale(1.2); }
