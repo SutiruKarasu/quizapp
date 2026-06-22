@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
     <style>
-        /* ── CSS Variables matching main site ─────────────────────────── */
+
         :root {
             --powder-blue: #00aaff;
             --baby-pink: #00aaff;
@@ -44,7 +44,6 @@
             a, button, input { cursor: none !important; }
         }
 
-        /* ── Bokeh canvas ─────────────────────────────────────────────── */
         #bokeh-canvas {
             position: fixed;
             inset: 0;
@@ -53,7 +52,6 @@
             pointer-events: none;
         }
 
-        /* ── Background gradient overlay ─────────────────────────────── */
         .bg-overlay {
             position: fixed;
             inset: 0;
@@ -67,7 +65,6 @@
             background: linear-gradient(135deg, #181c24 0%, #221a20 100%);
         }
 
-        /* ── Camera flash ─────────────────────────────────────────────── */
         #camera-flash {
             position: fixed;
             inset: 0;
@@ -82,7 +79,7 @@
             transition: opacity 0.05s ease-in;
         }
 
-        /* ── Custom cursor ────────────────────────────────────────────── */
+
         .custom-cursor {
             width: 20px; height: 20px;
             border: 1px solid var(--baby-pink);
@@ -99,7 +96,7 @@
             border-color: var(--powder-blue);
         }
 
-        /* ── Theme toggle ─────────────────────────────────────────────── */
+      
         .theme-btn {
             position: fixed;
             top: 30px; right: 30px;
@@ -113,7 +110,7 @@
         }
         .theme-btn:hover { transform: scale(1.2) rotate(12deg); }
 
-        /* ── Main container ───────────────────────────────────────────── */
+        
         .maintenance-container {
             position: relative;
             z-index: 10;
@@ -127,7 +124,7 @@
             gap: 0;
         }
 
-        /* ── Logo ─────────────────────────────────────────────────────── */
+        
         .logo-wordmark {
             font-family: 'Italianno', cursive;
             font-size: 3rem;
@@ -139,7 +136,7 @@
             transition: color 0.5s;
         }
 
-        /* ── Main title ───────────────────────────────────────────────── */
+       
         .maintenance-title {
             font-family: 'Playfair Display', serif;
             font-weight: 400;
@@ -177,7 +174,7 @@
             100% { background-position: -250% center; }
         }
 
-        /* ── Decorative line ──────────────────────────────────────────── */
+       
         .deco-line {
             width: 0;
             height: 1px;
@@ -191,7 +188,7 @@
             to   { width: 160px; opacity: 1; }
         }
 
-        /* ── Subtitle ─────────────────────────────────────────────────── */
+       
         .maintenance-subtitle {
             font-family: 'Playfair Display', serif;
             font-style: italic;
@@ -205,7 +202,7 @@
             transition: color 0.5s;
         }
 
-        /* ── Notify form ──────────────────────────────────────────────── */
+        
         .notify-wrapper {
             opacity: 0;
             animation: fadeUp 1s cubic-bezier(0.25, 1, 0.5, 1) 1.4s forwards;
@@ -264,7 +261,7 @@
             transition: color 0.5s;
         }
 
-        /* ── Social link ──────────────────────────────────────────────── */
+       
         .social-row {
             margin-top: 2.5rem;
             opacity: 0;
@@ -286,7 +283,7 @@
             border-bottom-color: var(--powder-blue);
         }
 
-        /* ── Bottom hint ──────────────────────────────────────────────── */
+        
         .click-hint {
             position: fixed;
             bottom: 28px;
@@ -304,7 +301,7 @@
             transition: color 0.5s;
         }
 
-        /* ── Click counter ────────────────────────────────────────────── */
+        
         #click-counter {
             position: fixed;
             bottom: 28px;
@@ -319,7 +316,7 @@
         }
         #click-counter.visible { opacity: 0.45; }
 
-        /* ── Easter egg modal ─────────────────────────────────────────── */
+      
         #easter-egg {
             position: fixed;
             top: 50%;
@@ -365,7 +362,7 @@
             margin: 1.2rem auto;
         }
 
-        /* ── Floating background letters ──────────────────────────────── */
+       
         .lumos-letter {
             position: fixed;
             font-family: 'Playfair Display', serif;
@@ -385,7 +382,7 @@
             100% { transform: translateY(-8vh)  rotate(360deg); opacity: 0; }
         }
 
-        /* ── Ripple on click ──────────────────────────────────────────── */
+       
         .ripple {
             position: fixed;
             border-radius: 50%;
@@ -401,13 +398,13 @@
             to   { transform: translate(-50%, -50%) scale(6); opacity: 0; }
         }
 
-        /* ── Entrance ─────────────────────────────────────────────────── */
+
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(22px); }
             to   { opacity: 1; transform: translateY(0); }
         }
 
-        /* ── Mobile ───────────────────────────────────────────────────── */
+        
         @media (max-width: 600px) {
             .maintenance-title { letter-spacing: 3px; }
             .logo-wordmark { font-size: 2.4rem; }
@@ -485,7 +482,7 @@
     <script>
     'use strict';
 
-    // ── Theme ────────────────────────────────────────────────────────────────
+  
     const themeBtn = document.getElementById('theme-toggle');
     const applyTheme = (dark) => {
         document.body.classList.toggle('dark-mode', dark);
@@ -498,7 +495,7 @@
         localStorage.setItem('theme', dark ? 'dark' : 'light');
     });
 
-    // ── Custom cursor ────────────────────────────────────────────────────────
+   
     const cursor = document.getElementById('cursor');
     let mouseX = -200, mouseY = -200;
 
@@ -514,14 +511,14 @@
         el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
     });
 
-    // ── Camera flash ─────────────────────────────────────────────────────────
+  
     const flashEl = document.getElementById('camera-flash');
     function triggerFlash() {
         flashEl.classList.add('flash-active');
         setTimeout(() => flashEl.classList.remove('flash-active'), 80);
     }
 
-    // ── Ripple effect ─────────────────────────────────────────────────────────
+   
     function spawnRipple(x, y) {
         const r = document.createElement('div');
         r.classList.add('ripple');
@@ -533,7 +530,7 @@
         setTimeout(() => r.remove(), 750);
     }
 
-    // ── Bokeh canvas ──────────────────────────────────────────────────────────
+
     const canvas = document.getElementById('bokeh-canvas');
     const ctx    = canvas.getContext('2d');
     let W = 0, H = 0;
@@ -633,7 +630,7 @@
         requestAnimationFrame(loop);
     })();
 
-    // ── Click interaction ─────────────────────────────────────────────────────
+   
     let clickCount = 0;
     const counterEl  = document.getElementById('click-counter');
     const eggEl      = document.getElementById('easter-egg');
@@ -680,7 +677,7 @@
         }, 3800);
     }
 
-    // ── Floating LUMOS letters ────────────────────────────────────────────────
+
     const WORD = 'LUMOS';
     function spawnLetter() {
         const el = document.createElement('div');
@@ -698,11 +695,11 @@
     for (let i = 0; i < 14; i++) spawnLetter();
     setInterval(spawnLetter, 3500);
 
-    // ── Shimmer on title after entrance ──────────────────────────────────────
+  
     const titleEl = document.getElementById('mainTitle');
     setTimeout(() => titleEl.classList.add('shimmer-active'), 1800);
 
-    // ── Notify form ───────────────────────────────────────────────────────────
+    
     const notifyForm    = document.getElementById('notifyForm');
     const notifySuccess = document.getElementById('notifySuccess');
 
